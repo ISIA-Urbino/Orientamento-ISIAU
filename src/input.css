@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'HalyardDisplayMedium';
+  src:
+    url('fonts/HalyardDisplayMedium.woff2') format('woff2'),
+    url('fonts/HalyardDisplayMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'HalyardTextMedium';
+  src:
+    url('fonts/HalyardTextMedium.woff2') format('woff2'),
+    url('fonts/HalyardTextMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* add the code bellow */
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
+
+@layer components {
+  /*#accordion-items > .domanda-container {
+        @apply opacity-0 -translate-x-12 translate-y-12 transition-opacity duration-100 ease-out will-change-transform;
+    }
+    #accordion-items > .domanda-container.visible {
+        @apply opacity-100 translate-x-0 translate-y-0;
+    }*/
+  .domanda-container .domanda-container .domanda {
+    @apply font-display text-[calc(100vh/28)] leading-[calc(100vh/30)] lg:text-[calc(100vh/16)] lg:leading-[calc(100vh/16)] lg:hover:translate-x-0 lg:hover:underline;
+  }
+  .domanda:before {
+    @apply absolute left-0 right-0 top-0 w-full content-none;
+  }
+  .risposta .domanda.show {
+    @apply lg:text-black;
+  }
+  .risposta {
+    @apply font-text text-[calc(100vh/40)] lg:pl-[calc(100vw/12)] lg:text-[calc(100vh/32)] lg:leading-[calc(100vh/32)];
+  }
+  .risposta .risposta {
+    @apply lg:pl-0;
+  }
+  .risposta .domanda {
+    @apply col-span-8 col-start-2 inline-block w-full cursor-pointer pb-2 text-[calc(100vh/24)] leading-[calc(100vh/24)] lg:pb-0 lg:text-[calc(100vh/16)] lg:leading-[calc(100vh/16)];
+  }
+  .immagini-hover {
+    @apply absolute bottom-2 right-2 -z-10 hidden h-auto;
+  }
+  ol li {
+    @apply list-inside list-decimal;
+  }
+  a,
+  a:link {
+    @apply underline;
+  }
+  a:hover,
+  a.nav-link {
+    @apply no-underline;
+  }
+  .testo a,
+  .testo a:link {
+    @apply no-underline decoration-0;
+  }
+  .testo a:hover {
+    @apply underline decoration-4;
+  }
+  .blur {
+    @apply blur-md;
+  }
+  .blur-transition {
+    @apply transition-[filter] duration-300 ease-out;
+  }
+}

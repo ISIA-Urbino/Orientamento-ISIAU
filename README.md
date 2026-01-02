@@ -8,4 +8,4 @@ Il sito è costruito con **HTML, Tailwind CSS e DaisyUI**, garantendo un design 
 
 Il sito è pensato per accompagnare studenti e famiglie nella scoperta dell'offerta formativa di ISIA Urbino, fornendo informazioni chiare e accessibili sui corsi, le procedure di ammissione e la vita accademica.
 
-**Sito pubblicato:** [orientamento.isiaurbino.net](https://orientamento.isiaurbino.net)
+**Sito pubblicato:** [orientamento.isiaurbino.net](https://orientamento.isiaurbino.net]

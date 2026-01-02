@@ -1,0 +1,25 @@
+.accordion-content {
+    transition: max-height 0.5s ease-in-out;
+  }
+  .max-h-0 {
+    max-height: 0;
+  }
+  .max-h-screen {
+    max-height: 500px; /* Imposta un valore adeguato al contenuto */
+  }
+  .domanda-container {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  .accordion-trigger {
+    width: 100%;
+    background: none;
+    border: none;
+    font-size: 18px;
+    text-align: left;
+    cursor: pointer;
+  }
+  .risposta {
+    padding: 10px;
+    background: #f9f9f9;
+  }

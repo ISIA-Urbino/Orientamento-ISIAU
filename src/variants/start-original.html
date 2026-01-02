@@ -1,0 +1,589 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./output.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+  <!--<script src="luxy.js" charset="utf-8"></script>-->
+</head>
+<body class="px-2 lg:px-2 h-full overflow-hidden">
+
+  <div class="lg:hidden opacity-30 absolute top-0 left-0 w-full h-full pointer-events-none z-0">
+    <img id="img01" class="animateImage absolute top-0 left-0 w-[calc(100vw/6)] h-[calc(100vw/6)] lg:w-[calc(100vw/12)] lg:h-[calc(100vw/12)] aspect-square object-cover" src="img/01.webp" />
+    <img id="img02" class="animateImage absolute top-0 left-0 w-[calc(100vw/6)] h-[calc(100vw/6)] lg:w-[calc(100vw/12)] lg:h-[calc(100vw/12)] aspect-square object-cover" src="img/02.webp" />
+    <img id="img04" class="animateImage absolute  top-0 left-0 w-[calc(100vw/6)] h-[calc(100vw/6)] lg:w-[calc(100vw/12)] lg:h-[calc(100vw/12)] aspect-square object-cover" src="img/03.webp" />
+    <img id="img05" class="animateImage absolute top-0 left-0 w-[calc(100vw/6)] h-[calc(100vw/6)] lg:w-[calc(100vw/12)] lg:h-[calc(100vw/12)] aspect-square object-cover" src="img/04.webp" />
+    <img id="img06" class="animateImage absolute top-0 left-0 w-[calc(100vw/6)] h-[calc(100vw/6)] lg:w-[calc(100vw/12)] lg:h-[calc(100vw/12)] aspect-square object-cover" src="img/05.webp" />
+    <img id="img07" class="animateImage absolute top-0 left-0 w-[calc(100vw/6)] h-[calc(100vw/6)] lg:w-[calc(100vw/12)] lg:h-[calc(100vw/12)] aspect-square object-cover" src="img/06.webp" />
+    <img id="img08" class="animateImage absolute  top-0 left-0 w-[calc(100vw/6)] h-[calc(100vw/6)] lg:w-[calc(100vw/12)] lg:h-[calc(100vw/12)] aspect-square object-cover" src="img/07.webp" />
+    <img id="img09" class="animateImage absolute top-0 left-0 w-[calc(100vw/6)] h-[calc(100vw/6)] lg:w-[calc(100vw/12)] lg:h-[calc(100vw/12)] aspect-square object-cover" src="img/08.webp" />
+    <img id="img10" class="animateImage absolute  top-0 left-0 w-[calc(100vw/6)] h-[calc(100vw/6)] lg:w-[calc(100vw/12)] lg:h-[calc(100vw/12)] aspect-square object-cover" src="img/09.webp" />
+    <img id="img11" class="animateImage absolute top-0 left-0 w-[calc(100vw/6)] h-[calc(100vw/6)] lg:w-[calc(100vw/12)] lg:h-[calc(100vw/12)] aspect-square object-cover" src="img/10.webp" />
+  </div>
+
+  <div class="grid grid-cols-12 grid-flow-row auto-rows-max">
+    <div class="hidden lg:block col-start-1 col-span-1">
+      <nav>
+        <ul class="h-full flex flex-col justify-start overflow-y-auto no-scrollbar">
+          <li class="h-[calc(100vh/9.5)]">
+            <a href="#" class="nav-link" data-section="1">ISIA U</a>
+          </li>
+          <li class="h-[calc(100vh/9.5)]">
+            <a href="#" class="nav-link" data-section="2">Offerta formativa</a>
+          </li>
+          <li class="h-[calc(100vh/9.5)]">
+            <a href="#" class="nav-link" data-section="3">Calendario</a>
+          </li>
+          <li class="h-[calc(100vh/9.5)]">
+            <a href="#" class="nav-link" data-section="4">Ammissioni</a>
+          </li>
+          <li class="h-[calc(100vh/9.5)]">
+            <a href="#" class="nav-link" data-section="5">Costi</a>
+          </li>
+          <li class="h-[calc(100vh/9.5)]">
+            <a href="#" class="nav-link" data-section="6">Erasmus</a>
+          </li>
+          <li class="h-[calc(100vh/9.5)]">
+            <a href="#" class="nav-link" data-section="7">Vita a Urbino</a>
+          </li>
+          <li class="h-[calc(100vh/9.5)]">
+            <a href="#" class="nav-link" data-section="8">Open day</a>
+          </li>
+          <li class="h-[calc(100vh/9.5)]">
+            <a href="#" class="nav-link" data-section="9">Contattaci</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    
+    <div class="lg:col-start-2 col-span-12 lg:col-span-8">
+      <div class="w-full h-screen overflow-y-auto no-scrollbar" id="accordion-container">
+        <div class="" id="accordion-items">
+          <!-- Accordion si popolerà qui -->
+        </div>
+      </div>
+    </div>
+
+    <footer class="w-full h-9 absolute left-[calc(100%+-2.25rem)] bottom-0 -rotate-90 origin-top-left">
+      <p id="stringafooter">ISIA U - <span id="year"></span></p>
+    </footer> 
+
+  <script>
+    
+    const baseItems = [
+      {
+        id: 1,
+        title: "ISIA U",
+        content: "",
+        subItems: [
+          {
+            id: "1-1",
+            title: "Che cos&rsquo;è ISIA U?",
+            content: "ISIA Urbino è una scuola di progettazione grafica e comunicazione visiva, fondata su valori quali impegno sociale, ricerca progettuale e interdisciplinarietà, attraverso un approccio teorico e pratico. Se vuoi sapere di più sulla nostra storia, <a href='https://isiaurbino.net/istituto/storia' title='ISIA U' target='_blank'>visita il nostro sito</a>."
+          },
+          {
+            id: "1-2",
+            title: "Ma in pratica, cosa si fa?",
+            content: "Ci occupiamo di progettazione in senso ampio: progetti editoriali, caratteri tipografici, siti web, allestimento di spazi espositivi e tanto altro. Il percorso di studi permette di avvicinarsi ad approcci molto diversi, sperimentando attraverso i vari linguaggi (illustrazione, fotografia, editoria, tipografia) che vengono approfonditi durante i corsi.  Per vedere alcuni dei nostri progetti, ti invitiamo a visitare il nostro sito web alla sezione <a href='https://isiaurbino.net/showcase' title='ISIA U showcase' target='_blank'>Showcase</a> e dare un&rsquo;occhiata al <a href='https://www.instagram.com/isiaurbino/' title='Profilo Instagram di ISIA U' target='_blank'>profilo Instagram della scuola</a>."
+          },
+          {
+            id: "1-3",
+            title: "Quindi l&rsquo;ISIA è una scuola pubblica?",
+            content: "L&rsquo;ISIA di Urbino fa parte del comparto AFAM (Alta Formazione Artistico Musicale), sotto l&rsquo;egida del Ministero dell&rsquo;istruzione, dell&rsquo;università e della ricerca. La scuola rilascia Diplomi Accademici di primo e secondo livello (che hanno a tutti gli effetti lo stesso valore di una laurea universitaria), in particolare: <ol><li>Diploma Accademico di primo livello, equipollente ad un titolo di Laurea in Disegno Industriale (L-4)</li><li>Diploma Accademico di secondo livello, equipollente ad un titolo di Laurea Magistrale in Design (LM-12)</li></ol> <a href='https://www.camera.it/temiap/documentazione/temi/pdf/1104313.pdf' title='Struttura comparto AFAM' target='_blank'>Questo documento in PDF</a> spiega meglio la natura del comparto AFAM e delle sue scuole."
+          },
+          {
+            id: "1-4",
+            title: "Dove si trova l&rsquo;ISIA?",
+            content: "La nostra scuola si trova nell&rsquo;<a href='https://maps.app.goo.gl/MApPyVa7WgWKVn7c7' title='Dov'è ISIA U' target='_blank'>ex monastero di Santa Chiara a Urbino</a>, un suggestivo monumento rinascimentale. Gli spazi ampi e luminosi invitano studentз e docentз a fermarsi in sede oltre l&rsquo;orario di lezione, per lavorare in tranquillità e condividere momenti di pausa nell’incantevole giardino pensile, nelle stagioni più calde. Fai un <a href='https://www.progetti-isiau.net/santachiara360/' title='ISIA U 360' target='_blank'>tour virtuale dell&rsquo;istituto</a>."
+          },
+          {
+            id: "1-5",
+            title: "Cosa distingue ISIA U dalle altre scuole di design?",
+            content: "ISIA U è specializzata nella progettazione editoriale in senso ampio, attraverso un  approccio che coinvolge diverse discipline. Non ci limitiamo solo a disegnare libri: ogni progetto diventa un&rsquo;opportunità per esplorare nuove forme espressive attraverso vari linguaggi (illustrazione, tipografia, fotografia, stampa…). La scuola vanta docenti e ospiti di fama internazionale che vengono invitati in occasione di workshop e seminari. Il <a href='https://isiaurbino.net/istituto/offerta-didattica' target='_blank' title='Offerta formativa ISIA U'>nostro ricco piano di studi</a>, insieme alle numerose attività proposte e il confronto con figure di spicco, mira a formare progettisti grafici con mentalità aperta e un approccio critico nei confronti della professione."
+          },
+          {
+            id: "1-6",
+            title: "Quali sono le prospettive lavorative?",
+            content: "Terminato il tuo percorso all’ISIA potresti lavorare in uno studio di design, sviluppare i tuoi progetti come freelance, collaborare con case editrici, testate giornalistiche o aziende; potresti lavorare nell&rsquo;ambito della moda, della pubblicità o dei beni culturali. Questi sono solo esempi, in quanto ogni percorso è a sé: durante gli anni all&rsquo;ISIA avrai la possibilità di capire meglio quali sono le cose che ti piacciono di più. Uscitǝ da questa scuola sarai unǝ progettista con un&rsquo;ampia cultura visiva, capace di gestire progetti complessi, e il lavoro che troverai dipenderà dalle tue attitudini."
+          },
+          {
+            id: "1-7",
+            title: "Durante gli anni in ISIA c'è la possibilità di entrare in contatto con realtà esterne alla scuola? ",
+            content: "Sì, ISIA U ha attivato, in particolare in questi ultimi anni, numerose collaborazioni con musei, aziende, fiere e realtà del territorio. Spesso i docenti stessi, all&rsquo;interno dei propri corsi, organizzano delle attività per far entrare in contatti lз studentз con altri professionisti del settore. Se vuoi scoprire di più visita la <a href='https://isiaurbino.net/ricerca-e-sviluppo' target='_blank' title='Ricerca e Sviluppo ISIA U'>sezione Ricerca e sviluppo</a> del nostro sito e il nostro <a href='https://www.instagram.com/isiaurbino/' title='Profilo Instagram di ISIA U' target='_blank'>profilo Instagram</a>."
+          },
+        ]
+      },
+      {
+        id: 2,
+        title: "Offerta formativa",
+        content: "",
+        subItems: [
+          {
+            id: "2-1",
+            title: "Che corsi ci sono?",
+            content: "L’offerta formativa dell’ISIA consiste in un triennio in Progettazione grafica e Comunicazione visiva e tre corsi specialistici, rispettivamente in Comunicazione per l’Editoria, Fotografia e Illustrazione. Durante l’anno l’ISIA organizza, esclusivamente per lз studentз, numerose attività integrative in collaborazione con persone professioniste del mondo della grafica, della fotografia e dell’illustrazione, provenienti dall’Italia e dall’estero: incontri, corsi intensivi, lezioni pubbliche, laboratori, performance, mostre e tanto altro.  Il nostro sito riporta più informazioni in merito all’<a href='https://isiaurbino.net/istituto/offerta-didattica' target='_blank' title='Offerta formativa ISIA U'>offerta didattica</a>. Se invece vuoi avere un’idea delle attività integrative che sono state organizzate in passato puoi visitare il nostro <a href='https://www.instagram.com/isiaurbino/' title='Profilo Instagram di ISIA U' target='_blank'>profilo Instagram</a>."
+          },
+          {
+            id: "2-2",
+            title: "Ci sono dei laboratori?",
+            content: "Sì, l’ISIA ha numerosi laboratori che si differenziano in base alla tipologia di attività: ogni corso (editoria, illustrazione, fotografia) ha le sue necessità specifiche. I laboratori e le aule possono essere utilizzati durante gli orari di apertura dell’Istituto (lun-ven 9-18, sab 9-13).<br/><span class='text-bubble-gum'>testo laboratori troppo lungo?</span>"
+          },
+          {
+            id: "2-3",
+            title: "Chi sono lз docenti in ISIAU?",
+            content: "Sono per la maggior parte professionistз: oltre all&rsquo;insegnamento, portano avanti la propria attività in diversi ambiti, tra cui design, fotografia e illustrazione. Ciascun docente sviluppa un proprio percorso di ricerca rispetto alla didattica, che condivide con lз propriз studentз."
+          },
+          {
+            id: "2-4",
+            title: "Come funzionano i crediti (CFA)?",
+            content: "I crediti rappresentano le ore di lezione e di lavoro individuale svolte durante un corso: vengono acquisiti dallo studente dopo aver superato l’esame di profitto della materia stessa. Durante il proprio percorso di studi bisogna anche accumulare dei crediti extra attraverso diverse attività: tirocini formativi, progetti personali, partecipazione a workshop e conferenze. Per maggiori informazioni sui crediti extra, puoi <a href='mailto:creditiliberi@isiaurbino.net'>scriverci un&rsquo;email</a>."
+          },
+          {
+            id: "2-5",
+            title: "Ci sono corsi in inglese?",
+            content: "Sì. Oltre a un corso obbligatorio di lingua inglese per tuttə lə studentə, L’ISIA invita designers e artistǝ internazionali a tenere lezioni e seminari, spesso in lingua inglese."
+          },
+          {
+            id: "2-6",
+            title: "Esiste un archivio digitale dei progetti di tesi di ex-studentə?",
+            content: "Sì, recentemente un gruppo di ex-studenti (Francesco Bellagamba e Riccardo Savioli) ha progettato il sito <a href='https://progetti-isiau.net/ex-press/' title='Archivio tesi ISIA U' target='_blank'>Ex-press</a> come archivio tesi."
+          },          
+        ]
+      },
+      {
+        id: 3,
+        title: "Calendario",
+        content: "",
+        subItems: [
+          {
+            id: "3-1",
+            title: "Quando iniziano le lezioni? La frequenza è obbligatoria?",
+            content: "Le lezioni iniziano generalmente intorno a metà ottobre e finiscono verso la metà di giugno. La frequenza è obbligatoria e per ogni materia bisogna seguire almeno l’80% delle ore di lezione."
+          },
+          {
+            id: "3-2",
+            title: "Dove trovo gli orari delle lezioni?",
+            content: "Ogni studente può controllare gli orari di lezione tramite il Google calendar relativo al proprio corso, aggiornato quotidianamente."
+          },
+          {
+            id: "3-3",
+            title: "Come è organizzata una giornata di lezione in ISIA?",
+            content: "La giornata di lezione dura generalmente 8 ore, 4 la mattina e 4 il pomeriggio, con una pausa pranzo di un&rsquo;ora. Il calendario delle lezioni viene continuamente aggiornato. Capita che lз docenti cambino date e orari delle proprie lezioni, secondo le proprie disponibilità per conciliare impegni professionali e didattica."
+          },
+          {
+            id: "3-4",
+            title: "Quando si possono dare gli esami?",
+            content: "Ci sono tre sessioni di esame, ciascuna della durata di una settimana e programmata annualmente con la pubblicazione del calendario didattico: la sessione invernale a febbraio, quella estiva a giugno/luglio e l&rsquo;autunnale a settembre. Ogni sessione prevede un solo appello, il che significa che puoi sostenere l&rsquo;esame solo una volta durante quella sessione. Questo perché si fanno molte revisioni durante le lezioni; di solito, arriviamo all&rsquo;esame con il progetto già sviluppato."
+          },
+          {
+            id: "3-5",
+            title: "Quando sono le sessioni di tesi?",
+            content: "Le sessioni di tesi sono tre e di solito si tengono qualche settimana dopo gli esami: a marzo, a luglio e a settembre. Le date di queste sessioni vengono comunicate annualmente attraverso il calendario didattico."
+          }
+        ]
+      },
+      {
+        id: 4,
+        title: "Ammissioni",
+        content: "",
+        subItems: [
+          {
+            id: "4-1",
+            title: "Chi può iscriversi in ISIA?",
+            content: "Per iscriversi al Triennio è necessario essere in possesso di un qualsiasi Diploma di scuola superiore di II grado; per iscriversi ai Bienni è necessario aver ottenuto una Laurea o un Diploma accademico di I livello."
+          },
+          {
+            id: "4-2",
+            title: "In cosa consistono le prove di ammissione?",
+            content: "Esistono due differenti modalità in base al corso di studi che ti interessa. <ol><li>Per il Triennio di Progettazione Grafica e Comunicazione Visiva la prova di ammissione consiste in una prova scritto-grafica di natura profondamente attitudinale: questo significa che il test non si basa sulle tue competenze pregresse, ma sulla tua capacità di risolvere un problema in maniera originale e innovativa. Una volta superata la parte scritta, è previsto un colloquio orale con lз docenti. Per maggiori informazioni, puoi trovare l’ultima prova di ammissione cliccando qui <span class='text-bubble-gum'>(link?)</span>.</li><li>Per tutti i Bienni la prova di ammissione consiste nella presentazione del proprio portfolio a una commissione composta da alcunз docenti del corso d’interesse. Al superamento di una prima selezione, si viene ammessi a un colloquio orale.</li></ol>"
+          },
+          {
+            id: "4-3",
+            title: "Quante persone vengono ammesse ogni anno?",
+            content: "Alla conclusione delle sessioni di selezione annuali, vengono ammessз massimo 25 studentз per ciascun corso, tranne per il corso biennale in Fotografia, per il quale il numero massimo di ammessз è di 18 studentз."
+          },
+          {
+            id: "4-4",
+            title: "Come ci si iscrive all’esame di ammissione?",
+            content: "Il bando di ammissione fornisce tutte le informazioni necessarie per registrarti all&rsquo;esame. Per capire meglio, puoi consultare il <a href='https://ww2.gazzettaamministrativa.it/opencms/export/sites/default/_gazzetta_amministrativa/amministrazione_trasparente/_marche/_istituto_superiore_per_le_industrie_artistiche_di_urbino/050_ban_con/2024/Documenti_1706702738911/1706709477610_535_-_a.a._2024-2025_-_bando_esami_di_ammissione_triennio_signed.pdf' target='_blank' title='Bando per l&rsquo;ammissioneal Triennio per'anno accademico 2024-2025'>bando per l&rsquo;ammissione all&rsquo;anno accademico 2024-2025</a>."
+          },
+          {
+            id: "4-5",
+            title: "Sono un lavoratore. Posso iscrivermi in ISIA?",
+            content: "L’istituto si contraddistingue per il suo forte approccio pratico: il confronto con docentз e studentз è essenziale per migliorare e completare i propri progetti. Questo implica la necessità di partecipare alle lezioni: è obbligatorio frequentare almeno l’80% delle ore di un corso per poter sostenere l&rsquo;esame corrispondente. L&rsquo;iscrizione presso il nostro istituto potrebbe quindi non essere compatibile con gli impegni di chi svolge una professione in modo continuativo."
+          }
+        ]
+      },
+      {
+        id: 5,
+        title: "Costi",
+        content: "",
+        subItems: [
+          {
+            id: "5-1",
+            title: "Quando costa la retta annuale?",
+            content: "Come specificato nel <a href='https://drive.google.com/file/d/1twIPEMv1oUFpAnNCZR55exBlTlpVaPR7/view?usp=sharing' target='_blank' title='Manifesto degli studi ISIA U'>Manifesto degli Studi</a>, la retta annuale massima per il corso triennale di Progettazione grafica è di 1200€, mentre per i corsi biennali è di 1800€. Tuttavia, per ciascunз studentз la retta cambia in base al reddito familiare: al diminuire del proprio ISEE (sotto i 30.000€), infatti, c&rsquo;è una progressiva riduzione della quota, fino all’esonero completo (per coloro che presentano un ISEE inferiore a 20.000€). Coloro che vincono la borsa di studio regionale ERDIS, inoltre, sono esonerati dal pagamento delle tasse, oltre a ricevere benefici come l&rsquo;alloggio e la mensa gratuiti."
+          },
+          {
+            id: "5-2",
+            title: "Quali sono i costi associati all&rsquo;acquisto dei materiali e degli strumenti necessari per i corsi?",
+            content: "Dipende. La spesa media varia a seconda del percorso di studi e dei progetti d&rsquo;esame di ciascunǝ studentǝ; l&rsquo;istituto mette a disposizione numerosi laboratori e strumenti, tra cui fotocamere, scanner e stampanti, per ridurre l&rsquo;impatto economico. L&rsquo;unico investimento che consideriamo fondamentale è l&rsquo;acquisto di un PC, che diventerà un compagno di studio e lavoro per la maggior parte dei corsi. Non è richiesta una conoscenza pregressa dei programmi; durante il tuo percorso all&rsquo;ISIA, imparerai ad utilizzare tutti i software necessari."
+          }
+        ]
+      },
+      {
+        id: 6,
+        title: "Erasmus",
+        content: "",
+        subItems: [
+          {
+            id: "6-1",
+            title: "È possibile partecipare al programma Erasmus + durante gli studi all&rsquo;ISIA?",
+            content: "Se sei unз studentз iscrittз al triennio o a un biennio specialistico dell’ISIA, puoi candidarti per il programma Erasmus+. Questo ti permetterà di trascorrere un periodo all&rsquo;estero, sia frequentando corsi in un altro istituto per un semestre o un anno (noto come 'mobilità studio'), sia svolgendo un breve stage di uno o due mesi presso un&rsquo;azienda o uno studio, sempre all&rsquo;interno dell&rsquo;Unione Europea (noto come 'mobilità traineeship'). Si tratta di un&rsquo;esperienza interessante per arricchire il tuo percorso di studi. <span class='text-bubble-gum'>Se sei interessato, puoi trovare ulteriori informazioni nella sezione 'Outgoing Mobility' del nostro sito.</span>"
+          },
+          {
+            id: "6-2",
+            title: "Vorrei partecipare al programma Erasmus+ e trascorrere parte del mio percorso di studi all’ISIA U, dove posso ottenere più informazioni?",
+            content: "Se studi in un&rsquo;istituzione partner dell&rsquo;ISIA, hai l&rsquo;opportunità di trascorrere un periodo nella nostra scuola, che può durare uno o due semestri. Se sei interessatз, ti invitiamo a consultare la <a href='https://drive.google.com/file/d/1jjDtRqWvbTex-aYR0BbJUSCcuTcC1sP1/view?usp=drive_link' target='_blank' title='Guida Erasmus ISIA U'>nostra guida Erasmus</a>, dove troverai tutte le informazioni essenziali per il tuo periodo di studi nella nostra scuola."
+          }
+        ]
+      },
+      {
+        id: 7,
+        title: "Vita a Urbino",
+        content: "",
+        subItems: [
+          {
+            id: "7-1",
+            title: "Come è la vita a Urbino? Come si arriva a Urbino?",
+            content: "Urbino è una città piccola ma molto vivace, con tantissimз studentз provenienti da tutta Italia e dal mondo. Per aiutare lз nuovз studentз ad arrivare in città e capire come muoversi, abbiamo creato una <a href='https://drive.google.com/file/d/1jKz6ynGaj6IvtfUNZxtogTrC0lR91BX2/view?usp=sharing' target='_blank' title='Guida Urbino ISIA U'>piccola guida</a> con i  principali punti di riferimento della città."
+          },
+          {
+            id: "7-2",
+            title: "Come trovo casa ad Urbino?",
+            content: "Esistono diversi gruppi Facebook con cui moltз studentз hanno trovato alloggio. Eccone alcuni che possono tornarti utili: <ol><li><a href='https://www.facebook.com/groups/712142345464381/' target='_blank' title='Gruppo Facebook Cerco/Offro camera a Urbino'>Gruppo Cerco/Offro camera a Urbino</a></li><li>https://www.facebook.com/groups/1718046688412828/</li><li><a href='https://www.facebook.com/groups/559600694232417/' target='_blank' title='Gruppo Annunci affitti per studenti universitari'>Gruppo Annunci affitti per studenti universitari</a></li></ol> Inoltre, esiste anche il <a href='https://www.facebook.com/groups/derisioten' target='_blank' title='Gruppo Facebook ISIA U'>gruppo dellз studentз ISIA</a>, all&rsquo;interno del quale puoi sentirti liberз di fare domande. <span class='text-bubble-gum'>Oppure no, visto che il gruppo è chiuso?</span>"
+          },
+          {
+            id: "7-3",
+            title: "Esistono degli alloggi universitari (dormitori, collegi, case dello studente)?",
+            content: "Sì, l’Ente Regionale per il Diritto allo Studio (ERDIS) gestisce i collegi universitari. Sono gratuiti per chi ha la borsa di studio ERDIS e a pagamento per tuttз lз altrз studentз. Sul <a href='https://erdis.it/2-1-dove-siamo-urbino/' target='_blank' title='Guida Erdis alloggi'>sito dell&rsquo;Erdis</a> troverai maggiori informazioni."
+          },
+          {
+            id: "7-4",
+            title: "Sono presenti delle mense universitarie?",
+            content: "Sì, a Urbino sono presenti due punti ristoro. Sono gratuiti per chi ha la borsa di studio ERDIS e offrono tariffe agevolate per tuttз lз altrз studentз:<ol><li>Al centro di Urbino, Ristorazione “Duca” (Via Budassi 3)</li><li>AI collegi universitari, Ristorazione Tridente (Via Giancarlo de Carlo 7)</li></ol> Sul <a href='https://erdis.it/2-1-dove-siamo-urbino/' target='_blank' title='Guida Erdis alloggi'>sito dell&rsquo;Erdis</a> troverai maggiori informazioni."
+          }
+        ]
+      },
+      {
+        id: 8,
+        title: "Open day",
+        content: "",
+        subItems: [
+          {
+            id: "8-1",
+            title: "Come posso contattare la segreteria studentз?",
+            content: "Per domande legate a iscrizioni, ammissioni e didattica scrivi a: <a href='mailto:segreteriadirezione@isiaurbino.net'>segreteriadirezione@isiaurbino.net</a>. Per informazioni su orientamento scrivi a: <a href='mailto:isia.openday@isiaurbino.net'>isia.openday@isiaurbino.net</a>. Per informazioni urgenti, puoi contatta la segreteria: <a href='tel:+39 0722 4336'>+39 0722 4336</a>"
+          },
+          {
+            id: "8-2",
+            title: "È possibile parlare con qualche studentз/ex-studentз?",
+            content: "Certo, per richiedere un incontro online con gli studenti dell&rsquo;Open Day o per programmare una visita all&rsquo;Istituto, contattaci all&rsquo;indirizzo <a href='mailto:isia.openday@isiaurbino.net'>isia.openday@isiaurbino.net</a>."
+          },
+          {
+            id: "8-3",
+            title: "In che orari è possibile visitare l’ISIA?",
+            content: "La nostra sede è generalmente aperta dal Lunedì al Venerdì dalle 9 alle 18, il sabato dalle 9 alle 13. Ti consigliamo di <a href='tel:+39 0722 4336'>contattare la segreteria</a> per chiedere maggiori informazioni."
+          },
+          {
+            id: "8-4",
+            title: "Dove posso seguire le vostre attività ed eventi?",
+            content: "Puoi seguirci su <a href='https://www.instagram.com/isiaurbino/' title='Profilo Instagram di ISIA U' target='_blank'>Instagram</a>, <a href='https://it-it.facebook.com/ISIA.Urbino/' title='Profilo Facebook di ISIA U' target='_blank'>Facebook</a>Facebook e sul <a href='https://isiaurbino.net' title='Sito istituzionale di ISIA U' target='_blank'>nostro sito</a>."
+          },
+          {
+            id: "8-5",
+            title: "<span class='text-bubble-gum'>Quando sarà il prossimo Open Day?</span>",
+            content: "<span class='text-bubble-gum'>Il prossimo Open Day si terrà il (data da definire), e sarai lз benvenutз a trovarci dalle 9:00 alle 18:00. Se sei interessatз, ti invitiamo a iscriverti compilando il form disponibile a questo link (link da definire).</span>"
+          },
+          {
+            id: "8-6",
+            title: "<span class='text-bubble-gum'>Come è organizzato l’Open Day?</span>",
+            content: "<span class='text-bubble-gum'>Da chiarire con Biagetti.</span>"
+          }
+        ]
+      },
+      {
+        id: 9,
+        title: "Contattaci",
+        content: "",
+        subItems: [
+          {
+            id: "9-1",
+            title: "Come posso contattare la segreteria studentз?",
+            content: "Per domande legate a iscrizioni, ammissioni e didattica scrivi a: <a href='mailto:segreteriadirezione@isiaurbino.net'>segreteriadirezione@isiaurbino.net</a>. Per informazioni su orientamento scrivi a: <a href='mailto:isia.openday@isiaurbino.net'>isia.openday@isiaurbino.net</a>. Per informazioni urgenti, puoi contatta la segreteria: <a href='tel:+39 0722 4336'>+39 0722 4336</a>"
+          },
+          {
+            id: "9-2",
+            title: "È possibile parlare con qualche studentз/ex-studentз?",
+            content: "Certo, per richiedere un incontro online con gli studenti dell&rsquo;Open Day o per programmare una visita all&rsquo;Istituto, contattaci all&rsquo;indirizzo <a href='mailto:isia.openday@isiaurbino.net'>isia.openday@isiaurbino.net</a>."
+          },
+          {
+            id: "9-3",
+            title: "In che orari è possibile visitare l’ISIA?",
+            content: "La nostra sede è generalmente aperta dal Lunedì al Venerdì dalle 9 alle 18, il sabato dalle 9 alle 13. Ti consigliamo di <a href='tel:+39 0722 4336'>contattare la segreteria</a> per chiedere maggiori informazioni."
+          },
+          {
+            id: "9-4",
+            title: "Dove posso seguire le vostre attività ed eventi?",
+            content: "Puoi seguirci su <a href='https://www.instagram.com/isiaurbino/' title='Profilo Instagram di ISIA U' target='_blank'>Instagram</a>, <a href='https://it-it.facebook.com/ISIA.Urbino/' title='Profilo Facebook di ISIA U' target='_blank'>Facebook</a>Facebook e sul <a href='https://isiaurbino.net' title='Sito istituzionale di ISIA U' target='_blank'>nostro sito</a>."
+          },
+          {
+            id: "9-5",
+            title: "<span class='text-bubble-gum'>Quando sarà il prossimo Open Day?</span>",
+            content: "<span class='text-bubble-gum'>Il prossimo Open Day si terrà il (data da definire), e sarai lз benvenutз a trovarci dalle 9:00 alle 18:00. Se sei interessatз, ti invitiamo a iscriverti compilando il form disponibile a questo link (link da definire).</span>"
+          },
+          {
+            id: "9-6",
+            title: "<span class='text-bubble-gum'>Come è organizzato l’Open Day?</span>",
+            content: "<span class='text-bubble-gum'>Da chiarire con Biagetti.</span>"
+          }
+        ]
+      }
+    ];
+    
+    function createAccordionItem(item, level = 0, isOriginal = false) {
+  // Aggiungiamo l'ID solo agli elementi originali
+  const sectionId = isOriginal ? `id="section-${item.id}"` : '';
+  
+  const itemHtml = `
+    <div class="domanda-container" data-item-id="${item.id}" ${sectionId}>
+      <button class="flex w-full items-center justify-between text-left font-medium transition-all duration-500 ease-in-out accordion-trigger group">
+        <span class="domanda w-full cursor-pointer pb-3 lg:pb-0 inline-block lg:col-start-2 col-span-8 text-[calc(100vh/16)] lg:text-[calc(100vh/9)] lg:leading-[calc(100vh/9.5)] transition-all duration-200 ease-in-out lg:translate-x-0 lg:group-hover:translate-x-[calc(100vw/24)] h-[calc(100vh/9.5)]">${item.title}</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 shrink-0 transition-transform duration-500 ease-in-out">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+      <div class="overflow-hidden transition-all duration-500 ease-in-out accordion-content max-h-0 grid">
+        <div class="pt-2 pb-4 risposta">
+          ${item.content}
+          ${item.subItems ? `
+            <div class="mt-2">
+              ${item.subItems.map(subItem => createAccordionItem(subItem, level + 1, isOriginal)).join('')}
+            </div>
+          ` : ''}
+        </div>
+      </div>
+    </div>
+  `;
+  return itemHtml;
+}
+
+function handleAccordionClick(event) {
+  const trigger = event.target.closest('.accordion-trigger');
+  if (!trigger) return;
+
+  const accordionItem = trigger.closest('[data-item-id]');
+  const itemId = accordionItem.getAttribute('data-item-id');
+  const content = trigger.nextElementSibling;
+  const isOpen = content.classList.contains('max-h-screen');
+  
+  if (!itemId.includes('-')) {
+    document.querySelectorAll('[data-item-id]:not([data-item-id*="-"])').forEach(item => {
+      if (item !== accordionItem) {
+        const otherContent = item.querySelector('.accordion-content');
+        const otherTrigger = item.querySelector('.accordion-trigger svg');
+        otherContent.classList.remove('max-h-screen');
+        otherContent.classList.add('max-h-0');
+        otherTrigger.classList.remove('rotate-180');
+      }
+    });
+  } else {
+    const parentId = itemId.split('-')[0];
+    document.querySelectorAll(`[data-item-id^="${parentId}-"]`).forEach(item => {
+      if (item !== accordionItem) {
+        const otherContent = item.querySelector('.accordion-content');
+        const otherTrigger = item.querySelector('.accordion-trigger svg');
+        otherContent.classList.remove('max-h-screen');
+        otherContent.classList.add('max-h-0');
+        otherTrigger.classList.remove('rotate-180');
+      }
+    });
+  }
+
+  if (isOpen) {
+    content.classList.remove('max-h-screen');
+    content.classList.add('max-h-0');
+    trigger.querySelector('svg').classList.remove('rotate-180');
+  } else {
+    content.classList.remove('max-h-0');
+    content.classList.add('max-h-screen');
+    trigger.querySelector('svg').classList.add('rotate-180');
+  }
+}
+
+function initializeAccordion() {
+  const container = document.getElementById('accordion-container');
+  const itemsContainer = document.getElementById('accordion-items');
+
+  // Initialize Lenis
+  const lenis = new Lenis({
+    wrapper: container,
+    content: itemsContainer,
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    direction: 'vertical',
+    gestureDirection: 'vertical',
+    smooth: true,
+    smoothTouch: false,
+    touchMultiplier: 2
+  });
+
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  
+  requestAnimationFrame(raf);
+
+  // Add initial sets of items
+  let initialContent = '';
+  // Prima set con ID (originale)
+  initialContent += baseItems.map(item => createAccordionItem(item, 0, true)).join('');
+  // Altri due set senza ID (cloni)
+  for (let i = 0; i < 2; i++) {
+    initialContent += baseItems.map(item => createAccordionItem(item, 0, false)).join('');
+  }
+  itemsContainer.innerHTML = initialContent;
+
+  // Event delegation for accordion clicks 
+  itemsContainer.addEventListener('click', handleAccordionClick);
+
+  // Save lenis instance globally
+  window.lenis = lenis;
+
+  // Infinite scroll handler
+  let scrollPosition = 0;
+  container.addEventListener('scroll', function() {
+    const scrollTop = this.scrollTop;
+    const scrollHeight = this.scrollHeight;
+    const clientHeight = this.clientHeight;
+    
+    // Scrolling down
+    if (scrollTop > scrollPosition) {
+      if (scrollTop + clientHeight > scrollHeight * 0.7) {
+        const newItems = baseItems.map(item => createAccordionItem(item, 0, false)).join('');
+        itemsContainer.insertAdjacentHTML('beforeend', newItems);
+      }
+    }
+    
+    // Scrolling up
+    if (scrollTop < scrollPosition) {
+      if (scrollTop < scrollHeight * 0.3) {
+        const newItems = baseItems.map(item => createAccordionItem(item, 0, false)).join('');
+        itemsContainer.insertAdjacentHTML('afterbegin', newItems);
+        this.scrollTop = scrollTop + (scrollHeight * 0.2);
+      }
+    }
+    
+    scrollPosition = scrollTop;
+  });
+
+  // Add smooth scrolling class
+  container.classList.add('smooth-scroll');
+}
+
+function scrollToSection(sectionId) {
+  const container = document.getElementById('accordion-container');
+  const section = document.getElementById(`section-${sectionId}`);
+  
+  if (section) {
+    const containerTop = container.getBoundingClientRect().top;
+    const sectionTop = section.getBoundingClientRect().top;
+    const relativePosition = sectionTop - containerTop;
+    
+    container.scrollTo({
+      top: container.scrollTop + relativePosition - 20,
+      behavior: 'smooth'
+    });
+    
+    const trigger = section.querySelector('.accordion-trigger');
+    const content = section.querySelector('.accordion-content');
+    if (content.classList.contains('max-h-0')) {
+      content.classList.remove('max-h-0');
+      content.classList.add('max-h-screen');
+      trigger.querySelector('svg').classList.add('rotate-180');
+    }
+  }
+}
+
+// Initialize when document is ready
+$(document).ready(function() {
+  initializeAccordion();
+});
+  </script>
+  
+  <script src="script.js"></script>
+
+  <script>
+    $(document).ready(function() {
+      $(".domanda").each(function(i) {
+          setTimeout(() => {
+            $(this).addClass("show");
+          }, 200 * i);
+      });
+    });
+  </script>
+
+<!--<script>
+  $(document).ready(function() {
+    $('.domanda-container').hover(
+      function() {
+          // Mouse enter - fade in matching image
+          var itemId = $(this).data('item-id');
+          $('img[id="' + itemId + '"]').css('opacity', '1');
+      },
+      function() {
+          // Mouse leave - fade out matching image
+          var itemId = $(this).data('item-id');
+          $('img[id="' + itemId + '"]').css('opacity', '0');
+      }
+    );
+  });
+</script>-->
+
+<script>
+  // Ancore
+  $(document).ready(function() {
+    // Click per i link di <nav>
+      $('.nav-link').on('click', function(e) {
+  e.preventDefault();
+  const sectionId = $(this).data('section');
+  const targetSection = $(`#section-${sectionId}`);
+  
+  if (targetSection.length) {
+    // Scroll to section with offset
+    window.lenis.scrollTo(targetSection[0], {
+      offset: 0,
+      duration: 1.2,
+      immediate: false
+    });
+
+    // Open the accordion
+    /*setTimeout(() => {
+      const content = targetSection.find('.accordion-content');
+      const trigger = targetSection.find('.accordion-trigger svg');
+      if (!content.hasClass('max-h-screen')) {
+        content.removeClass('max-h-0').addClass('max-h-screen');
+        trigger.addClass('rotate-180');
+      }
+    }, 100);*/
+  }
+    });
+  });
+  </script>
+</body>
+</html>
