@@ -22,9 +22,9 @@
   },
   "scripts": {
     "dev": "concurrently \"npm run serve\" \"npm run watch\"",
-    "serve": "live-server .",
+    "serve": "live-server src",
     "watch": "npm run build -- -w",
-    "build": "tailwindcss -o dist/tailwind.css",
+    "build": "tailwindcss -o src/output.css",
     "test": "exit 0",
     "release-channel": "node ./scripts/release-channel.js",
     "release-notes": "node ./scripts/release-notes.js",
