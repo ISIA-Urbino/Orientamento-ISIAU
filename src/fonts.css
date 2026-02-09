@@ -1,0 +1,17 @@
+@font-face {
+  font-family: 'HalyardDisplayMedium';
+  src: url('fonts/HalyardDisplayMedium.woff2') format('woff2'),
+       url('fonts/HalyardDisplayMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'HalyardTextMedium';
+  src: url('fonts/HalyardTextMedium.woff2') format('woff2'),
+       url('fonts/HalyardTextMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}

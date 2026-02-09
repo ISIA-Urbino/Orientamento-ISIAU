@@ -2,6 +2,7 @@
 const plugin = require('tailwindcss/plugin')
 module.exports = {
   content: ['./src/**/*.{html,js}'],
+  safelist: [],
   theme: {
     screens: {
       sm: '640px',
