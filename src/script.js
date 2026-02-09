@@ -153,7 +153,7 @@ function changeImage(img) {
 }
 
 function animate(img) {
-  let imgWidth = img.offsetWidth; 
+  let imgWidth = img.offsetWidth;
   let imgHeight = img.offsetHeight;
 
   let x = Math.floor(Math.random() * (window.innerWidth - imgWidth)),
@@ -167,6 +167,10 @@ function animate(img) {
   changeImage(img).then(() => {
     imgWidth = img.offsetWidth;
     imgHeight = img.offsetHeight;
+    // Position image first, then make it visible
+    img.style.left = x + "px";
+    img.style.top = y + "px";
+    img.classList.remove('opacity-0');
     requestAnimationFrame(move);
   });
 

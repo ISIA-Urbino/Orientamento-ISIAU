@@ -24,6 +24,19 @@
   <meta name="twitter:title" content="Orientamento - ISIA Urbino">
   <meta name="twitter:description" content="Scopri ISIA Urbino - corsi di design, ammissioni e opportunità formative">
 
+  <!-- Preconnect to external CDNs for faster loading -->
+  <link rel="preconnect" href="https://code.jquery.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="https://code.jquery.com">
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+
+  <!-- Preload fonts for faster loading -->
+  <link rel="preload" href="./fonts/HalyardDisplayMedium.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./fonts/HalyardTextMedium.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- Preload only first image for initial display -->
+  <link rel="preload" href="./img/Progetti_0.jpg" as="image">
+
   <link href="./fonts.css" rel="stylesheet">
   <link href="./output.css" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
@@ -367,7 +380,7 @@
           {
             id: "8-1",
             title: "Quando sarà il prossimo Open day?",
-            content: "Un’ottima occasione per visitare l’ISIA è partecipare al prossimo Open day che si terrà il 16 marzo 2025. L’istituto sarà aperto dalle 9.00 alle 17.00. Saranno consultabili le tesi delle ultime sessioni, potrai ascoltare la presentazione di corsi e progetti, incontrare professoresse e professori, studentesse e studenti, e chiedere informazioni e supporto per l’iscrizione all’esame di ammissione."
+            content: "Un’ottima occasione per visitare l’ISIA è partecipare al prossimo Open day che si terrà il 14 marzo 2026 dalle 11:30 alle 17:30 e il 15 marzo dalle 9 alle 13:30. Saranno consultabili le tesi delle ultime sessioni, potrai ascoltare la presentazione di corsi e progetti, incontrare professoresse e professori, studentesse e studenti, e chiedere informazioni e supporto per l’iscrizione all’esame di ammissione."
           },
           {
             id: "8-2",
@@ -874,20 +887,50 @@ $(document).ready(function() {
     'img/Eventi_21.jpg'
   ];
 
-  // Show a random image when the page loads
-  const randomIndex = Math.floor(Math.random() * imageUrls.length);
-  const randomImageUrl = imageUrls[randomIndex];
-  const img = $('<img>', {
-    src: randomImageUrl,
-    class: 'immagini-hover absolute object-contain b-2 r-2 w-[30vw] blur blur-transition'
+  // Preload all images for faster loading with promises
+  const preloadedImages = new Map();
+  const preloadPromises = imageUrls.map(url => {
+    return new Promise((resolve) => {
+      const img = new Image();
+      img.onload = () => {
+        preloadedImages.set(url, true);
+        resolve();
+      };
+      img.onerror = () => {
+        preloadedImages.set(url, false);
+        resolve();
+      };
+      img.src = url;
+    });
   });
-  
-  $('.immagini-container').append(img);
-  img.fadeIn(200);
 
+  // Track if preloading is complete
+  let imagesPreloaded = false;
+  Promise.all(preloadPromises).then(() => {
+    imagesPreloaded = true;
+    console.log('All images preloaded');
+  });
+
+  // Show a random image when the page loads (after short delay to allow preloading)
   setTimeout(() => {
-    img.removeClass('blur');
-  }, 200);
+    const randomIndex = Math.floor(Math.random() * imageUrls.length);
+    const randomImageUrl = imageUrls[randomIndex];
+    const img = $('<img>', {
+      src: randomImageUrl,
+      class: 'immagini-hover absolute object-contain bottom-2 right-2 w-[30vw] blur blur-transition',
+      css: { display: 'none' }
+    });
+
+    $('.immagini-container').append(img);
+
+    // Only show after image is fully loaded
+    img.on('load', function() {
+      $(this).fadeIn(200);
+      setTimeout(() => {
+        $(this).removeClass('blur');
+      }, 200);
+    });
+  }, 300);
 
   if ($(window).width() >= 1024) {
     // Gestione mouseenter
@@ -895,18 +938,22 @@ $(document).ready(function() {
       const $this = $(this);
       const randomIndex = Math.floor(Math.random() * imageUrls.length);
       const imgUrl = imageUrls[randomIndex];
-      
+
       const img = $('<img>', {
         src: imgUrl,
-        class: 'immagini-hover absolute object-contain b-2 r-2 w-[30vw] blur blur-transition'
+        class: 'immagini-hover absolute object-contain bottom-2 right-2 w-[30vw] blur blur-transition',
+        css: { display: 'none' }
       });
-      
-      $('.immagini-container').append(img);
-      img.fadeIn(200);
 
-      setTimeout(() => {
-        img.removeClass('blur');
-      }, 200);
+      $('.immagini-container').append(img);
+
+      // Only show after image is fully loaded
+      img.on('load', function() {
+        $(this).fadeIn(200);
+        setTimeout(() => {
+          $(this).removeClass('blur');
+        }, 200);
+      });
     });
     
     // Gestione mouseleave
@@ -923,18 +970,22 @@ $(document).ready(function() {
       const $this = $(this);
       const randomIndex = Math.floor(Math.random() * imageUrls.length);
       const imgUrl = imageUrls[randomIndex];
-      
+
       const img = $('<img>', {
         src: imgUrl,
-        class: 'immagini-hover absolute object-contain b-2 r-2 w-[50vw] blur blur-transition'
+        class: 'immagini-hover absolute object-contain bottom-2 right-2 w-[50vw] blur blur-transition',
+        css: { display: 'none' }
       });
-      
-      $('.immagini-container').append(img);
-      img.fadeIn(200);
 
-      setTimeout(() => {
-        img.removeClass('blur');
-      }, 200);
+      $('.immagini-container').append(img);
+
+      // Only show after image is fully loaded
+      img.on('load', function() {
+        $(this).fadeIn(200);
+        setTimeout(() => {
+          $(this).removeClass('blur');
+        }, 200);
+      });
     });
 
     $(document).on('mouseleave', '.domanda-first-level', function() {
@@ -952,8 +1003,6 @@ $(document).ready(function() {
 });
 
 </script>
-<!--<script src="nightynight.js"></script>-->
-<script src="script.js"></script>
 
 </body>
 </html>

@@ -24,6 +24,24 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="#000">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Preload fonts for faster loading -->
+    <link rel="preload" href="./fonts/HalyardDisplayMedium.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/HalyardTextMedium.woff2" as="font" type="font/woff2" crossorigin>
+
+    <!-- Preload first batch of images -->
+    <link rel="preload" href="./img/Progetti_0.jpg" as="image">
+    <link rel="preload" href="./img/Progetti_1.jpg" as="image">
+    <link rel="preload" href="./img/Progetti_2.jpg" as="image">
+    <link rel="preload" href="./img/Progetti_3.jpg" as="image">
+    <link rel="preload" href="./img/Progetti_4.jpg" as="image">
+    <link rel="preload" href="./img/Progetti_5.jpg" as="image">
+
+    <!-- Prefetch start.html page for faster navigation -->
+    <link rel="prefetch" href="./start.html" as="document">
+    <link rel="preconnect" href="https://code.jquery.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
     <link href="./fonts.css" rel="stylesheet">
     <link href="./output.css" rel="stylesheet" />
 
@@ -94,16 +112,16 @@
     </footer>
 
     <div class="pointer-events-none absolute left-0 top-0 h-full w-full">
-      <img id="img01" class="animateImage absolute left-0 top-0 w-20 lg:w-40 -z-[1]" src="" loading="eager" decoding="async" fetchpriority="high" alt="" />
-      <img id="img02" class="animateImage absolute left-0 top-0 w-20 lg:w-40 -z-[1]" src="" loading="eager" decoding="async" fetchpriority="high" alt="" />
-      <img id="img03" class="animateImage absolute left-0 top-0 w-20 lg:w-40 -z-[1]" src="" loading="eager" decoding="async" fetchpriority="high" alt="" />
-      <img id="img04" class="animateImage absolute left-0 top-0 w-20 lg:w-40 -z-[1]" src="" loading="eager" decoding="async" fetchpriority="high" alt="" />
-      <img id="img05" class="animateImage absolute left-0 top-0 w-20 lg:w-40 -z-[1]" src="" loading="eager" decoding="async" fetchpriority="high" alt="" />
-      <img id="img06" class="animateImage absolute left-0 top-0 w-20 lg:w-40 -z-[1]" src="" loading="eager" decoding="async" fetchpriority="high" alt="" />
-      <img id="img07" class="animateImage absolute left-0 top-0 w-20 lg:w-40 -z-[1]" src="" loading="eager" decoding="async" fetchpriority="high" alt="" />
-      <img id="img08" class="animateImage absolute left-0 top-0 w-20 lg:w-40 -z-[1]" src="" loading="eager" decoding="async" fetchpriority="high" alt="" />
-      <img id="img09" class="animateImage absolute left-0 top-0 w-20 lg:w-40 -z-[1]" src="" loading="eager" decoding="async" fetchpriority="high" alt="" />
-      <img id="img10" class="animateImage absolute left-0 top-0 w-20 lg:w-40 -z-[1]" src="" loading="eager" decoding="async" fetchpriority="high" alt="" />
+      <img id="img01" class="animateImage absolute left-0 top-0 w-20 lg:w-40 -z-[1] opacity-0 transition-opacity duration-300" src="" loading="eager" decoding="async" fetchpriority="high" alt="" />
+      <img id="img02" class="animateImage absolute left-0 top-0 w-20 lg:w-40 -z-[1] opacity-0 transition-opacity duration-300" src="" loading="eager" decoding="async" fetchpriority="high" alt="" />
+      <img id="img03" class="animateImage absolute left-0 top-0 w-20 lg:w-40 -z-[1] opacity-0 transition-opacity duration-300" src="" loading="eager" decoding="async" fetchpriority="high" alt="" />
+      <img id="img04" class="animateImage absolute left-0 top-0 w-20 lg:w-40 -z-[1] opacity-0 transition-opacity duration-300" src="" loading="eager" decoding="async" fetchpriority="high" alt="" />
+      <img id="img05" class="animateImage absolute left-0 top-0 w-20 lg:w-40 -z-[1] opacity-0 transition-opacity duration-300" src="" loading="eager" decoding="async" fetchpriority="high" alt="" />
+      <img id="img06" class="animateImage absolute left-0 top-0 w-20 lg:w-40 -z-[1] opacity-0 transition-opacity duration-300" src="" loading="eager" decoding="async" fetchpriority="high" alt="" />
+      <img id="img07" class="animateImage absolute left-0 top-0 w-20 lg:w-40 -z-[1] opacity-0 transition-opacity duration-300" src="" loading="eager" decoding="async" fetchpriority="high" alt="" />
+      <img id="img08" class="animateImage absolute left-0 top-0 w-20 lg:w-40 -z-[1] opacity-0 transition-opacity duration-300" src="" loading="eager" decoding="async" fetchpriority="high" alt="" />
+      <img id="img09" class="animateImage absolute left-0 top-0 w-20 lg:w-40 -z-[1] opacity-0 transition-opacity duration-300" src="" loading="eager" decoding="async" fetchpriority="high" alt="" />
+      <img id="img10" class="animateImage absolute left-0 top-0 w-20 lg:w-40 -z-[1] opacity-0 transition-opacity duration-300" src="" loading="eager" decoding="async" fetchpriority="high" alt="" />
     </div>
 
     <script src="script.js"></script>
