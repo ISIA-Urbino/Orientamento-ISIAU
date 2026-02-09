@@ -1,7 +1,7 @@
 let imgs = document.getElementsByClassName("animateImage");
 imgs = Array.from(imgs);
 
-const speed = 2.5;   
+const speed = 2.5;
 
 const colors = [
   '#FFFFFF', '#000000'
@@ -111,6 +111,14 @@ const imageUrls = [
 'img/Eventi_19.jpg',
 'img/Eventi_20.jpg',
 'img/Eventi_21.jpg',];
+
+// Preload all images for faster loading
+const preloadedImages = new Map();
+imageUrls.forEach(url => {
+  const img = new Image();
+  img.src = url;
+  preloadedImages.set(url, img);
+});
 
 let activeImages = new Set();
 
